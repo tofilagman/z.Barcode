@@ -36,7 +36,7 @@ namespace z.Barcode.Rendering
    /// <summary>
    /// Renders a barcode into a Svg image
    /// </summary>
-   public class SvgRenderer : IBarcodeRenderer<SvgRenderer.SvgImage>
+   public class SVGRenderer : IBarcodeRenderer<SVGRenderer.SvgImage>
    {
 #if !UNITY
 #if PORTABLE
@@ -85,9 +85,9 @@ namespace z.Barcode.Rendering
 #endif
 
       /// <summary>
-      /// Initializes a new instance of the <see cref="SvgRenderer"/> class.
+      /// Initializes a new instance of the <see cref="SVGRenderer"/> class.
       /// </summary>
-      public SvgRenderer()
+      public SVGRenderer()
       {
 #if NETFX_CORE || SILVERLIGHT
          Foreground = Colors.Black;

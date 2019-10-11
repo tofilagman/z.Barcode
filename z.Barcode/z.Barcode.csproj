@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>tofilagman</Authors>
+    <Company>Exia Org</Company>
+    <Description />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="client\result\optional\**" />
+    <Compile Remove="presentation\**" />
+    <Compile Remove="silverlight\**" />
+    <Compile Remove="unity\**" />
+    <Compile Remove="xamarin\**" />
+    <EmbeddedResource Remove="client\result\optional\**" />
+    <EmbeddedResource Remove="presentation\**" />
+    <EmbeddedResource Remove="silverlight\**" />
+    <EmbeddedResource Remove="unity\**" />
+    <EmbeddedResource Remove="xamarin\**" />
+    <None Remove="client\result\optional\**" />
+    <None Remove="presentation\**" />
+    <None Remove="silverlight\**" />
+    <None Remove="unity\**" />
+    <None Remove="xamarin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="BitmapLuminanceSource.Silverlight.cs" />
+    <Compile Remove="BitmapSourceLuminanceSource.cs" />
+    <Compile Remove="common\BitMatrix.Silverlight.cs" />
+    <Compile Remove="renderer\WriteableBitmapRenderer.cs" />
+  </ItemGroup>
+   
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
+    <PackageReference Include="ZXing.Net" Version="0.16.5" />
+  </ItemGroup>
+   
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup> 
+</Project>

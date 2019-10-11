@@ -15,6 +15,8 @@
 */
 
 using System;
+using z.Barcode;
+using z.Barcode.Client.Result;
 
 namespace com.google.zxing.client.result.optional
 {

@@ -16,14 +16,15 @@
 
 using System;
 using System.Windows;
-#if NETFX_CORE
-using Windows.UI;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
-#else
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-#endif
+//#if NETFX_CORE
+//using Windows.UI;
+//using Windows.UI.Xaml.Media;
+//using Windows.UI.Xaml.Media.Imaging;
+//#else
+//using System.Windows.Media;
+//using System.Windows.Media.Imaging;
+//using z.Barcode.Rendering;
+//#endif
 
 using ZXing.Common;
 using ZXing.OneD;

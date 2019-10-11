@@ -14,61 +14,17 @@
  * limitations under the License.
  */
 
-using System;
-#if !PORTABLE
-#if !(SILVERLIGHT || NETFX_CORE)
-#if !UNITY
+using System; 
 using System.Drawing;
-#else
-using UnityEngine;
-#endif
-#elif NETFX_CORE
-using Windows.UI.Xaml.Media.Imaging;
-#else
-using System.Windows.Media.Imaging;
-#endif
-#endif
-#if MONOANDROID
-using Android.Graphics;
-#endif
-
+ 
 namespace z.Barcode
 {
-   /// <summary>
-   /// A smart class to decode the barcode inside a bitmap object
-   /// </summary>
-#if MONOTOUCH
-   public class BarcodeReader : BarcodeReaderGeneric<MonoTouch.UIKit.UIImage>, IBarcodeReader, IMultipleBarcodeReader
-   {
-      private static readonly Func<MonoTouch.UIKit.UIImage, LuminanceSource> defaultCreateLuminanceSource = 
-         (img) => new RGBLuminanceSource(new Bitmap(img), (int)img.Size.Width, (int)img.Size.Height);
-#else
-#if !PORTABLE
-#if !(SILVERLIGHT || NETFX_CORE)
-#if !UNITY
+ 
    public class BarcodeReader : BarcodeReaderGeneric<Bitmap>, IBarcodeReader, IMultipleBarcodeReader
    {
       private static readonly Func<Bitmap, LuminanceSource> defaultCreateLuminanceSource =
          (bitmap) => new BitmapLuminanceSource(bitmap);
-#else
-   public class BarcodeReader : BarcodeReaderGeneric<Color32[]>, IBarcodeReader, IMultipleBarcodeReader
-   {
-      private static readonly Func<Color32[], int, int, LuminanceSource> defaultCreateLuminanceSource =
-         (rawColor32, width, height) => new Color32LuminanceSource(rawColor32, width, height);
-#endif
-#else
-   public class BarcodeReader : BarcodeReaderGeneric<WriteableBitmap>, IBarcodeReader, IMultipleBarcodeReader
-   {
-      private static readonly Func<WriteableBitmap, LuminanceSource> defaultCreateLuminanceSource =
-         (bitmap) => new BitmapLuminanceSource(bitmap);
-#endif
-#else
-   public class BarcodeReader : BarcodeReaderGeneric<byte[]>, IBarcodeReader, IMultipleBarcodeReader
-   {
-      private static readonly Func<byte[], LuminanceSource> defaultCreateLuminanceSource =
-         (data) => null;
-#endif
-#endif
+  
       /// <summary>
       /// Initializes a new instance of the <see cref="BarcodeReader"/> class.
       /// </summary>
@@ -87,25 +43,9 @@ namespace z.Barcode
       /// <param name="createBinarizer">Sets the function to create a binarizer object for a luminance source.
       /// If null then HybridBinarizer is used</param>
       public BarcodeReader(Reader reader,
-#if MONOTOUCH
-         Func<MonoTouch.UIKit.UIImage, LuminanceSource> createLuminanceSource,
-#elif MONOANDROID
-         Func<Android.Graphics.Bitmap, LuminanceSource> createLuminanceSource,
-#else
-#if !(SILVERLIGHT || NETFX_CORE)
-#if !UNITY
-#if !PORTABLE
+ 
          Func<Bitmap, LuminanceSource> createLuminanceSource,
-#else
-         Func<byte[], LuminanceSource> createLuminanceSource,
-#endif
-#else
-         Func<Color32[], int, int, LuminanceSource> createLuminanceSource,
-#endif
-#else
-         Func<WriteableBitmap, LuminanceSource> createLuminanceSource,
-#endif
-#endif
+ 
          Func<LuminanceSource, Binarizer> createBinarizer
          )
          : base(reader, createLuminanceSource, createBinarizer)
@@ -122,25 +62,9 @@ namespace z.Barcode
       /// <param name="createBinarizer">Sets the function to create a binarizer object for a luminance source.
       /// If null then HybridBinarizer is used</param>
       public BarcodeReader(Reader reader,
-#if MONOTOUCH
-         Func<MonoTouch.UIKit.UIImage, LuminanceSource> createLuminanceSource,
-#elif MONOANDROID
-         Func<Android.Graphics.Bitmap, LuminanceSource> createLuminanceSource,
-#else
-#if !(SILVERLIGHT || NETFX_CORE)
-#if !UNITY
-#if !PORTABLE
+ 
          Func<Bitmap, LuminanceSource> createLuminanceSource,
-#else
-         Func<byte[], LuminanceSource> createLuminanceSource,
-#endif
-#else
-         Func<Color32[], int, int, LuminanceSource> createLuminanceSource,
-#endif
-#else
-         Func<WriteableBitmap, LuminanceSource> createLuminanceSource,
-#endif
-#endif
+ 
          Func<LuminanceSource, Binarizer> createBinarizer,
          Func<byte[], int, int, RGBLuminanceSource.BitmapFormat, LuminanceSource> createRGBLuminanceSource
          )
